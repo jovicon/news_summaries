@@ -1,0 +1,25 @@
+{
+  "name": "news_summaries",
+  "version": "1.0.0",
+  "description": "This is my NodeJs News Summaries to my podcast",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jovicon/news_summaries.git"
+  },
+  "keywords": [
+    "news",
+    "summary",
+    "summaries",
+    "podcast"
+  ],
+  "author": "Jose Contreras",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jovicon/news_summaries/issues"
+  },
+  "homepage": "https://github.com/jovicon/news_summaries#readme"
+}
