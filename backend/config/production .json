@@ -1,0 +1,5 @@
+{
+    "name": "Server Production",
+    "database": "mongodb://localhost:27017/news_summaries_production",
+    "port": 3000
+}
