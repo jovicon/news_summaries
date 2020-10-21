@@ -4,6 +4,10 @@
 
 ### development environment
 
+**clone main repo**
+git clone https://github.com/jovicon/news_summaries.git
+
+
 **Migration up**
 migrate-mongo up -f db\migrate-mongo-config-dev.js
 
