@@ -9,7 +9,7 @@ module.exports = {
         $jsonSchema: {
           bsonType: 'object',
           // required: [ 'email', 'password', 'username' ],
-          required: [ 'id', 'title', 'content', 'url', 'channel' ],
+          required: [ 'id', 'title', 'url', 'content', 'category', 'channel' ],
           properties: {
             // email: {
             //   bsonType: 'string',
@@ -21,14 +21,20 @@ module.exports = {
             title: {
               bsonType: 'string',
             },
+            url: {
+              bsonType: 'string',
+            },
             content: {
               bsonType: 'string',
             },
-            url: {
+            category: {
               bsonType: 'string',
             },
             channel: {
               bsonType: 'string',
+            },
+            tags: {
+              bsonType: 'array',
             },
           },
         },
