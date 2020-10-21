@@ -1,2 +1,2 @@
 # news_summaries
-My Node Js news summaries
+My API scraping for podcast News.
