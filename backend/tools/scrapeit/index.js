@@ -1,4 +1,128 @@
-const scrapeIt = require("scrape-it")
+// bbc.com, cnnespanol.com, vice.com
+// vice.com/es
+
+const config = require('config');
+const mongoose = require('mongoose');
+const scrapeIt = require("scrape-it");
+const Summary = require('../../src/models/Summary')
+
+mongoose.connect(config.get('database'), {
+    useNewUrlParser: true
+});
+
+mongoose.connection.once("open", () => {
+    console.log("MongoDB database connection established successfully.")
+});
+
+const scraping = async function(url, scrapingStructure) {
+    const news = await scrapeIt(url, scrapingStructure)
+    .then(({data, response}) => {
+        console.log(`Status Code: ${response.statusCode}`);
+        return data;
+    })
+    .catch( error => {
+        console.log(error);
+    });
+    return news;
+}
+
+const save_scraping = async (url, googleStructure) => {
+    const news = await scraping(url,googleStructure);
+
+    news.articles.map((summary) => {
+        summarySave = new Summary(summary);
+
+        summarySave.save()
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    });
+}
+
+// const googleUrl = "https://news.google.com/topstories";
+const googleUrl = "https://news.google.cl/topstories";
+const googleStructure = {
+    articles: {
+        listItem: ".NiLAwe",
+        data: {
+            title: "h3.ipQwMb.ekueJc.RD0gLb",
+            url: {
+                selector: "h3.ipQwMb.ekueJc.RD0gLb a",
+                attr: "href"
+            }
+        }
+    }
+}
+save_scraping(googleUrl, googleStructure);
+
+
+// const bbcUrl = "https://www.bbc.com/news";
+// const bbcStructureA = {
+//     articles: {
+//         listItem: ".gel-layout__item.nw-c-top-stories__primary-item",
+//         data: {
+//             title: "h3.gs-c-promo-heading__title.gel-paragon-bold.nw-o-link-split__text",
+//             url: {
+//                 selector: "a.gs-c-promo-heading.gel-paragon-bold",
+//                 attr: "href"
+//             }
+//         }
+//     }
+// }
+// const bbcStructureB = {
+//     articles: {
+//         listItem: ".gel-layout__item.nw-c-top-stories__secondary-item",
+//         data: {
+//             title: "h3.gs-c-promo-heading__title.gel-pica-bold.nw-o-link-split__text",
+//             url: {
+//                 selector: "a.gs-c-promo-heading.gs-o-faux-block-link__overlay-link.gel-pica-bold.nw-o-link-split__anchor",
+//                 attr: "href"
+//             }
+//         }
+//     }
+// }
+// const bbcStructureC = {
+//     articles: {
+//         listItem: ".gel-layout__item.nw-c-top-stories__tertiary-items",
+//         data: {
+//             title: "h3.gs-c-promo-heading__title.gel-pica-bold.nw-o-link-split__text",
+//             url: {
+//                 selector: "a.gs-c-promo-heading.gs-o-faux-block-link__overlay-link.gel-pica-bold.nw-o-link-split__anchor",
+//                 attr: "href"
+//             }
+//         }
+//     }
+// }
+
+// const bbcStructureD = {
+//     articles: {
+//         listItem: "#u6098469211298796 .gel-layout__item.gs-o-faux-block-link",
+//         data: {
+//             title: "span.gs-c-promo-heading__title.gel-pica-bold",
+//             url: {
+//                 selector: "a.gs-c-promo-heading.nw-o-link.gs-o-bullet__text",
+//                 attr: "href"
+//             }
+//         }
+//     }
+// }
+
+
+
+// save_scraping(bbcUrl, bbcStructureA);
+// save_scraping(bbcUrl, bbcStructureB);
+// save_scraping(bbcUrl, bbcStructureC);
+// save_scraping(bbcUrl, bbcStructureD);
+
+
+
+// const google_news = scraping("https://news.google.com/topstories")
+//                         .then(response => { console.log(response)});
+
+// console.log(google_news);
 
 // Promise interface
 // const scrape = scrapeIt("https://ionicabizau.net", {
@@ -12,23 +136,6 @@ const scrapeIt = require("scrape-it")
 //     console.log(`Status Code: ${response.statusCode}`)
 //     console.log(data)
 // })
-
-scrapeIt("https://news.google.com/topstories", {
-    articles: {
-       listItem: ".NiLAwe",
-       data: {
-           title: "h3.ipQwMb.ekueJc.RD0gLb",
-           url: {
-               selector: "h3.ipQwMb.ekueJc.RD0gLb a",
-               attr: "href"
-           }
-       }
-    }
-})
-.then(({data, response}) => {
-    console.log(`Status Code: ${response.statusCode}`)
-    console.log(data)
-});
 
 
 // Callback interface

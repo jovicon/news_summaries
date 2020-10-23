@@ -1,6 +1,3 @@
-'use strict';
-
-
 const debug = require('debug')('server:debug');
 import mongoose from 'mongoose';
 import config from 'config';
