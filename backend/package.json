@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "news summaries API",
   "main": "index.js",
+  "type": "module",
   "directories": {
     "test": "tests"
   },
