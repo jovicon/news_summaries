@@ -1,11 +1,11 @@
 import express from 'express';
-import summary from '../models/Summary';
-const router = express.Router();
+import { Summary } from '../models/Summary.js';
+export const router = express.Router();
 
 
 router.get('/summaries', async(req, res) => {
     try {
-        const summaries = await summary.find({}).exec();
+        const summaries = await Summary.find({}).exec();
         res.status(200).send(summaries);
     }
     catch (error) {
@@ -13,5 +13,3 @@ router.get('/summaries', async(req, res) => {
     }
 });
 
-
-module.exports = router;

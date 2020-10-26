@@ -1,8 +1,6 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-
-let Summary = new mongoose.Schema({
-    id: mongoose.ObjectId,
+const SummarySchema = new mongoose.Schema({
     title: String,
     url: String,
     content: String,
@@ -13,5 +11,4 @@ let Summary = new mongoose.Schema({
     updated_at: Date
 });
 
-
-module.exports = mongoose.model("Summary", Summary)
+export const Summary = mongoose.model("Summary", SummarySchema);
