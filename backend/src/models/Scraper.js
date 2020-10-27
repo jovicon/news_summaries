@@ -3,7 +3,6 @@ import mongoose from 'mongoose'
 const ScraperSchema = new mongoose.Schema({
     url: {
         type: String,
-        unique: true,
     },
     structure: Object,
     created_at: Date,
