@@ -1,5 +1,5 @@
 import {saveScraping} from '../tools/scrapeit/index.js';
-import { Scraper } from '../src/models/Scraper.js';
+import { Scraper } from '../models/Scraper.js';
 
 
 console.log("SCRAPER METHOD BEGINNING");

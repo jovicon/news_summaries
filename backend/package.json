@@ -14,6 +14,7 @@
     "dev": "SET DEBUG=server:debug NODE_ENV=development && nodemon src/index.js --exec babel-node",
     "test": "SET DEBUG=server:debug NODE_ENV=test && mocha --require babel-core/register --reporter spec --exit   tests/ --exec babel-node",
     "test:watch": "SET DEBUG=server:debug NODE_ENV=development mocha  --require babel-core/register --watch --reporter  spec   tests/ --exec babel-node",
+    "test_jest": "jest",
     "migration-dev": "SET DEBUG=server:debug NODE_ENV=development && ",
     "eslint": "eslint src/**/*.js --ignore-pattern \"node_modules/\""
   },
@@ -28,10 +29,9 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-node8": "^1.2.0",
-    "chai": "^4.2.0",
     "config": "^3.3.2",
     "debug": "^4.2.0",
-    "mocha": "^8.2.0",
+    "jest": "^26.6.1",
     "nodemon": "^2.0.5",
     "supertest": "^5.0.0"
   },
@@ -68,6 +68,12 @@
     "parserOptions": {
       "sourceType": "module",
       "ecmaVersion": 2018
+    },
+    "jest" : {
+      "testEnvironment": "node",
+      "coveragePathIgnorePatterns": [
+        "/node_modules/"
+      ]
     }
   }
 }
