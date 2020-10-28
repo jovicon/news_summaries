@@ -1,9 +1,7 @@
 import mongoose from 'mongoose'
 
 const ScraperSchema = new mongoose.Schema({
-    url: {
-        type: String,
-    },
+    url: String,
     structure: Object,
     created_at: Date,
     updated_at: Date
