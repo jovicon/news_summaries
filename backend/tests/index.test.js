@@ -1,11 +1,9 @@
-describe('Sample Test', () => {
-  it('should test that true === true', () => {
-    expect(true).toBe(true)
-  });
-})
+import {expect} from 'chai';
+import config from  'config';
+import {server} from '../src/index';
 
-// describe('Server', () => {
-//     it('tests that server is running current port', async()=>{
-//         expect(server.port).to.equal(config.get('port'))
-//     })
-// });
+describe('Server', ()=>{
+    it('tests that server is running current port', async()=>{
+        expect(server.address().port).to.equal(config.get('port'))
+    })
+});

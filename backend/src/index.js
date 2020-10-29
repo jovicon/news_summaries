@@ -20,7 +20,12 @@ app.use(bodyParser.json());
 app.use('/api/v1/',summaryRouter);
 app.use('/api/v1/',scraperRouter);
 
-app.listen(config.get('port'),() => {
+const server = app.listen(config.get('port'),() => {
     debug(`server is running on port ${config.get('port')} and in ${config.get('name')} mode`);
     console.log(`server is running on port ${config.get('port')} and in ${config.get('name')} mode`);
 });
+
+export {server}
+
+// module.exports= app;
+// module.exports.port=listen.address().port;
