@@ -1,6 +1,6 @@
 import express from 'express';
-import { Scraper } from '../db/models/Scraper.js';
-import {saveScraping} from '../tools/scrapeit/index.js';
+import { Scraper } from '../db/models/scrapers';
+import {saveScraping} from '../tools/scrape-it/index.js';
 export const router = express.Router();
 
 

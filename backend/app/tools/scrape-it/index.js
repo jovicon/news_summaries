@@ -6,7 +6,7 @@
 
 // ES6
 import config from 'config';
-import { scrapeItAsync as scraping } from '../loaderES6/index.js';
+import { scrapeItAsync as scraping } from './loaderES6.js';
 import { Summary } from '../../db/models/Summary.js';
 
 export const saveScraping = async (url, googleStructure) => {

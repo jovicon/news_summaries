@@ -1,5 +1,5 @@
 import express from 'express';
-import { Summary } from '../db/models/Summary.js';
+import { Summary } from '../db/models/summary';
 export const router = express.Router();
 
 
@@ -12,4 +12,3 @@ router.get('/summaries', async(req, res) => {
         res.status(500).send({message:'Internal server error.'});
     }
 });
-

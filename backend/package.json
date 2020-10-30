@@ -1,32 +1,22 @@
 {
-  "name": "news_summaries_backend",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "news summaries API",
+  "description": "",
   "main": "index.js",
-  "type": "module",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
-    "set_config": "SET NODE_CONFIG_DIR=./src/config",
-    "dev": "npm run set_config && SET DEBUG=server:debug && SET NODE_ENV=development && nodemon src/index.js --exec babel-node",
-    "test": "npm run set_config && SET DEBUG=server:debug && SET NODE_ENV=test && mocha --require babel-core/register --reporter spec --exit   tests/ --exec babel-node",
-    "test_cov": "SET NODE_ENV=test && nyc --require @babel/register --all mocha ./tests/ --timeout 20000 --exit",
-    "test:watch": "SET DEBUG=server:debug NODE_ENV=development mocha  --require babel-core/register --watch --reporter  spec   tests/ --exec babel-node",
-    "build": "babel src -d dist --source-maps",
-    "serve": "SET NODE_ENV=production && node dist/index.js",
-    "start": "SET NODE_ENV=development && babel-node src/index.js",
-    "migration-dev": "SET DEBUG=server:debug NODE_ENV=development && ",
-    "eslint": "eslint src/**/*.js --ignore-pattern \"node_modules/\""
+    "dev": "SET NODE_ENV=development && nodemon --exec babel-node ./app/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "news",
-    "summaries",
-    "summary",
-    "podcast"
-  ],
-  "author": "Jose Contreras",
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "config": "^3.3.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.11",
+    "scrape-it": "^5.2.4"
+  },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
@@ -35,61 +25,9 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/register": "^7.12.1",
     "@babel/runtime": "^7.12.1",
-    "babel-cli": "^6.26.0",
     "babel-loader": "^8.1.0",
-    "babel-preset-node8": "^1.2.0",
-    "chai": "^4.2.0",
-    "chai-http": "^4.3.0",
-    "config": "^3.3.2",
-    "debug": "^4.2.0",
     "eslint": "^7.12.1",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.22.1",
-    "mocha": "^8.2.0",
-    "nodemon": "^2.0.5",
-    "nyc": "^15.1.0",
-    "supertest": "^5.0.0"
-  },
-  "dependencies": {
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "migrate-mongo": "^8.1.4",
-    "mongoose": "^5.10.9",
-    "scrape-it": "^5.2.4"
-  },
-  "babel": {
-    "presets": [
-      "node8"
-    ]
-  },
-  "engines": {
-    "node": ">=8"
-  },
-  "eslintConfig": {
-    "plugins": [
-      "node"
-    ],
-    "extends": [
-      "eslint:recommended",
-      "plugin:node/recommended"
-    ],
-    "rules": {
-      "node/no-unsupported-features/es-syntax": 0,
-      "node/no-unsupported-features/es-builtins": 0
-    },
-    "env": {
-      "node": true,
-      "es6": true
-    },
-    "parserOptions": {
-      "sourceType": "module",
-      "ecmaVersion": 2018
-    },
-    "jest": {
-      "testEnvironment": "node",
-      "coveragePathIgnorePatterns": [
-        "/node_modules/"
-      ]
-    }
+    "eslint-plugin-import": "^2.22.1"
   }
 }
