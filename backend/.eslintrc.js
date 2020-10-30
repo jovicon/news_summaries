@@ -8,9 +8,9 @@ module.exports = {
       "arrow-body-style": 0,
       "comma-dangle": 0,
   },
-      "env": {
-      "commonjs": true,
-      "node": true,
-      "mocha": true
+  "env": {
+    "commonjs": true,
+    "node": true,
+    "mocha": true
   },
 };

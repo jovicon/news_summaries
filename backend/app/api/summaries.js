@@ -1,11 +1,11 @@
 import express from 'express';
-import { Summary } from '../db/models/summary';
+import { summary } from '../db/models/summary';
 export const router = express.Router();
 
 
-router.get('/summaries', async(req, res) => {
+router.get('/', async(req, res) => {
     try {
-        const summaries = await Summary.find({}).exec();
+        const summaries = await summary.find({}).exec();
         res.status(200).send(summaries);
     }
     catch (error) {

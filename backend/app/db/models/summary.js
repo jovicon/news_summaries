@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const SummarySchema = new mongoose.Schema({
+const summarySchema = new mongoose.Schema({
     title: String,
     url: String,
     content: String,
@@ -11,4 +11,5 @@ const SummarySchema = new mongoose.Schema({
     updated_at: Date
 });
 
-export const Summary = mongoose.model("Summary", SummarySchema);
+const summary = mongoose.model("summary", summarySchema);
+export { summary } 

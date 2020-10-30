@@ -1,22 +1,33 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import config from 'config';
 import bodyParser from 'body-parser';
+import {mongoConnect} from './db/connection';
 import {router as summaryRouter} from './api/summaries';
 import {router as scraperRouter} from './api/scrapers';
+
+dotenv.config();
+mongoConnect(config);
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
+// APIs
 app.use('/api/v1/summaries',summaryRouter);
 app.use('/api/v1/scrapers',scraperRouter);
 
-// when a random route is inputed
-app.get('*', (req, res) => res.status(200).send({
-   message: 'Welcome to this API.'
-}));
+// API ping-pong test
+app.get('/ping', (req, res) => {
+    res.status(200).send(
+        {
+            ping: 'pong'
+        }
+    );
+});
 
 app.listen(port, () => {
    console.log(`Server is running on PORT ${port}`);
