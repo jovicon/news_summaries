@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "podcast-news-executor",
+    "name": "podcast-news",
+    "region": "us-east-2"
+  },
+  "api": {
+    "id": "fhlqnuk8tk"
+  }
+}

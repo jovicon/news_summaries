@@ -11,12 +11,16 @@
     "build-babel": "npm run clean && babel ./app --out-dir dist",
     "build": "npm run clean && npm run build-babel",
     "start": "npm run build && node ./dist/index.js",
-    "aws-dev-deploy": "npm run build && claudia create --version dev --region us-east-2 --name podcast-news --api-module dist/"
+    "aws-dev-deploy": "npm run build && claudia create --version dev --region us-east-2 --name podcast-news --api-module dist/index",
+    "aws-dev": "npm run build && claudia create --version dev --region us-east-2 --handler lambda.handler --deploy-proxy-api --name podcast-news --profile default",
+    "claudia-generate": "claudia generate-serverless-express-proxy --express-module dist/index",
+    "aws-dev-update": "npm run build && claudia update"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/runtime": "^7.12.1",
     "aws-serverless-express": "^3.3.8",
     "body-parser": "^1.19.0",
     "claudia-api-builder": "^4.1.2",
@@ -33,7 +37,6 @@
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/register": "^7.12.1",
-    "@babel/runtime": "^7.12.1",
     "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",

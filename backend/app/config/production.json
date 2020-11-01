@@ -1,5 +1,5 @@
 {
     "name": "Server Production",
-    "database": "mongodb://localhost:27017/news_summaries_production",
+    "database": "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.ebqib.mongodb.net/news_summaries_production?retryWrites=true&w=majority",
     "port": 3000
 }
