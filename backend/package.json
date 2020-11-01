@@ -8,10 +8,10 @@
     "dev": "cross-env NODE_ENV=development && nodemon --exec babel-node ./app/index.js",
     "test": "cross-env NODE_ENV=test && nyc --require @babel/register  mocha ./tests --timeout 20000 --exit",
     "prod": "node ./dist/index.js",
-    
+
     "build-babel": "npm run clean && babel ./app --out-dir dist",
     "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && node ./dist/index.js",
+    "start": "npm run build && node ./dist/index.js"
   },
   "keywords": [],
   "author": "",
