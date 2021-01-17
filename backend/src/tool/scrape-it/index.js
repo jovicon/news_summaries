@@ -7,11 +7,13 @@
 // ES6
 import config from 'config';
 import { scrapeItAsync as scraping } from './loaderES6.js';
-import { summary } from '../../db/models/summary';
+import { summary } from '../../db/models/summary.js';
 
 export const saveScraping = async (url, googleStructure) => {
     const news = await scraping(url,googleStructure);
 
+    console.log(news);
+    console.log(config);
     news.articles.map((sum) => {
 
         let summarySave = new summary(sum);
@@ -24,4 +26,6 @@ export const saveScraping = async (url, googleStructure) => {
             console.log(error);
         })
     });
+
+
 };

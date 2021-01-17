@@ -7,6 +7,7 @@ import {router as summaryRouter} from './api/summaries';
 import {router as scraperRouter} from './api/scrapers';
 
 dotenv.config();
+
 mongoConnect(config);
 
 const app = express();

@@ -1,22 +1,42 @@
-import {saveScraping} from '../tools/scrapeit/index.js';
-import { Scraper } from '../src/models/Scraper.js';
+import config from 'config';
+import {mongoConnect} from '../db/connection.js';
+import { saveScraping } from '../tool/scrape-it/index.js';
+import { Scraper } from '../db/models/scrapers.js';
 
+mongoConnect(config);
 
 // const googleUrl = "https://news.google.com/topstories";
-// const googleUrl = "https://news.google.cl/topstories";
-// const googleStructure = {
-//     articles: {
-//         listItem: ".NiLAwe",
-//         data: {
-//             title: "h3.ipQwMb.ekueJc.RD0gLb",
-//             url: {
-//                 selector: "h3.ipQwMb.ekueJc.RD0gLb a",
-//                 attr: "href"
-//             }
-//         }
-//     }
-// }
+const googleUrl = "https://news.google.cl/topstories";
+const googleStructure = {
+    articles: {
+        listItem: ".NiLAwe",
+        data: {
+            title: "h3.ipQwMb.ekueJc.RD0gLb",
+            url: {
+                selector: "h3.ipQwMb.ekueJc.RD0gLb a",
+                attr: "href"
+            }
+        }
+    }
+}
  
+// save scrapper - manual
+Scraper.init();
+
+const scraper = {
+    url: googleUrl,
+    structure: googleStructure
+}
+
+const scraperSave = new Scraper(scraper);
+scraperSave.save()
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+
 // save scrapper - manual
 // Scraper.init();
 

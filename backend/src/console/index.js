@@ -1,6 +1,6 @@
 import {saveScraping} from '../tool/scrape-it/index';
 import { scraper } from '../db/models/scrapers';
-import {mongoConnect} from '../db/connection';
+import { mongoConnect } from '../db/connection';
 import config from 'config';
 
 
