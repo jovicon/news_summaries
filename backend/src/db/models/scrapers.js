@@ -9,4 +9,4 @@ const scraperSchema = new mongoose.Schema({
     updated_at: Date
 });
 
-export const scraper = mongoose.model("scraper", scraperSchema);
+export const Scraper = mongoose.model("scraper", scraperSchema);
