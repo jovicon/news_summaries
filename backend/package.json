@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rm -rf ./dist && mkdir dist",
     "dev": "cross-env NODE_ENV=development && nodemon --exec babel-node ./app/index.js",
+    "local": "cross-env NODE_ENV=development && nodemon --exec babel-node ./app/index.local.js",
     "test": "cross-env NODE_ENV=test && nyc --require @babel/register  mocha ./tests --timeout 20000 --exit",
     "prod": "node ./dist/index.js",
     "build-babel": "npm run clean && babel ./app --out-dir dist",
@@ -47,6 +48,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
     "mocha": "^8.2.0",
+    "nodemon": "^2.0.7",
     "nyc": "^15.1.0"
   }
 }
