@@ -1,12 +1,12 @@
 import express from 'express';
-import { scraper } from '../db/models/scrapers.js';
+import { Scraper } from '../db/models/scrapers.js';
 import {saveScraping} from '../tool/scrape_it/index.js';
 
 export const router = express.Router();
 
 router.get('/process', async (req, res) => {
     try {
-        const scrapers = await scraper.find({}).exec();
+        const scrapers = await Scraper.find({}).exec();
         
         await scrapers.forEach( async (scraper) => {
             console.log(scraper);

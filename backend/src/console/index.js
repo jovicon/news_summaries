@@ -1,5 +1,5 @@
 import { saveScraping } from '../tool/scrape_it/index.js';
-import { scraper } from '../db/models/scrapers.js';
+import { Scraper } from '../db/models/scrapers.js';
 import { mongoConnect } from '../db/connection.js';
 import config from 'config';
 
@@ -8,7 +8,7 @@ console.log("MANUAL - SCRAPER METHOD BEGINNING");
 console.log("MANUAL - DB CONFIG: ", config);
 
 const scrapingProcess = async () => {
-    const scrapers = await scraper.find({}).exec();
+    const scrapers = await Scraper.find({}).exec();
     
     scrapers.map( async (scrapper) => {
         console.log("SCRAPPERS: ", scrapper.url);
