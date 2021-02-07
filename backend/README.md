@@ -13,3 +13,7 @@ SET NODE_CONFIG_DIR=./app/config
 
 // MAC - LINUX
 export NODE_CONFIG_DIR=./app/config
+
+// Lambda config and SET amazon credentials
+aws configure
+

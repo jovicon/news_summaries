@@ -7,14 +7,19 @@
 // ES6
 import config from 'config';
 import { scrapeItAsync as scraping } from './loaderES6.js';
-import { summary } from '../../db/models/summary';
+import { summary } from '../../db/models/summary.js';
 
-export const saveScraping = async (url, googleStructure) => {
-    const news = await scraping(url,googleStructure);
+export const saveScraping = async (scrapper) => {
+    const news = await scraping(scrapper.url,scrapper.structure);
 
+    console.log(news);
+    console.log(config);
     news.articles.map((sum) => {
+        sum.url = scrapper.replace
+            ? sum.url.replace(scrapper.replace, scrapper.url_replace)
+            : `${scrapper.url_replace}${sum.url}`;
 
-        let summarySave = new summary(sum);
+        const summarySave = new summary(sum);
 
         summarySave.save()
         .then((data) => {
@@ -24,4 +29,6 @@ export const saveScraping = async (url, googleStructure) => {
             console.log(error);
         })
     });
+
+
 };

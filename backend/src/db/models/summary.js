@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const summarySchema = new mongoose.Schema({
     title: String,
-    url: String,
+    url:  { type: String, unique: true },
     content: String,
     category: String,
     channel: String,
